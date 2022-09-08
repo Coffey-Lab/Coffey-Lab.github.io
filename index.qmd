@@ -1,0 +1,45 @@
+---
+website:
+  title: "Coffey Lab"
+  foreground: "#0b044f"
+  page-layout: full
+---
+
+::: column-page-inset
+::: column-page-inset-left
+The Coffey Lab
+
+As part of the Vanderbilt [Epithelial Biology Center](https://www.vumc.org/ebc/overview), the Coffey Lab...
+:::
+
+::: {.column-margin .column-container}
+![](RobertCoffey.jpeg)
+:::
+:::
+
+{{< pagebreak >}}
+
+::: {.column-page-inset .text-center}
+```{=html}
+
+
+<a class="btn btn-outline-primary", href="https://twitter.com/Coffey_EGFR" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-twitter" style='color:#0b044f' role='img' aria-label='Twitter'></i>
+</a>
+
+<a class="btn btn-outline-primary", href="https://github.com/Coffey-Lab" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-github" style='color:#0b044f' role='img' aria-label='Github'></i>
+</a>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+<a class="btn btn-outline-primary", href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C43&q=robert+j+coffey&btnG=&oq=rober" target="_blank" rel="noopener noreferrer">
+    <i class="ai ai-google-scholar" style='color:#0b044f' role='img' aria-label='Google Scholar'></i>
+</a>
+
+<a class="btn btn-outline-primary", href="mailto:robert.coffey@vumc.org" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-envelope" style='color:#0b044f' role='img' aria-label='email'></i>
+</a>
+```
+:::

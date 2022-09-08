@@ -1,0 +1,21 @@
+project:
+  type: website
+execute:
+  freeze: auto
+website:
+  title: "Coffey Lab"
+  favicon: favicon.ico
+  navbar:
+    background: "#0b044f"
+    foreground: "#FFFFFF"
+    left: 
+      - research.qmd
+
+format:
+  html:
+    theme: litera
+    css: styles.css
+    toc: true
+
+editor: visual
+
