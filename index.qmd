@@ -7,9 +7,7 @@ website:
 
 ::: column-page-inset
 ::: column-page-inset-left
-The Coffey Lab
-
-As part of the Vanderbilt [Epithelial Biology Center](https://www.vumc.org/ebc/overview), the Coffey Lab...
+As part of the [Vanderbilt Epithelial Biology Center](https://www.vumc.org/ebc/overview), the Coffey Lab studies EGFR and it ligands in regulation of epithelial cell growth and differentiation, gastrointestinal neoplasias, GI stem cells, and extracellular vesicles.
 :::
 
 ::: {.column-margin .column-container}

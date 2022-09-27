@@ -1,78 +1,32 @@
 ---
-title: "Publications"
-echo: false
-jupyter: python3
-section-divs: false
-keep-md: true
+title: "Research"
 ---
 
-```{python}
-import yaml
-from IPython.display import display, Markdown, HTML
-def readable_list(_s):
-  if len(_s) < 3:
-    return ' and '.join(map(str, _s))
-  *a, b = _s
-  return f"{', '.join(map(str, a))}, and {b}"
-def button(url, str, icon):
-    icon_base = icon[:2]
-    return f"""<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <a class="btn btn-outline-dark btn-sm", href="{url}" target="_blank" rel="noopener noreferrer">
-        <i class="{icon_base} {icon}" role='img' aria-label='{str}'></i>
-        {str}
-    </a>"""
-yaml_data = yaml.safe_load(open("scientific_papers.yml"))
-pub_strs = {"pubs": {}, "wps": {}}
-for _, data in yaml_data.items():
-    title_str = data["title"]
-    authors = data.get("authors", ["me"])
-    authors = [aut if aut != "me" else "<strong>Eliot T. McKinley</strong>" for aut in authors]
-    author_str = readable_list(authors)
-    year_str = data["year"]
-    abstract = data.get("abstract")
-    if abstract is None:
-        abstract = " "
-    buttons = []
-    preprint = data.get("preprint")
-    if preprint is not None:
-        buttons.append(button(preprint, "Preprint", "ai-biorxiv"))
-    github = data.get("github")
-    if github is not None:
-        buttons.append(button(github, "Github", "bi-github"))
-    pubmed=data.get("pubmed")
-    if pubmed is not None:
-        buttons.append(button(pubmed, "PubMed", "ai-pubmed"))
-    pub_url = data.get("published_url")
-    journal = data.get("journal")
-    working_paper = pub_url is None
-    
-    pub_str = f'{author_str}. ({year_str}) "{title_str}."'
-    if journal is not None:
-        pub_str += f" <em>{journal}</em><br>"
-    if working_paper:
-        if year_str not in pub_strs["wps"]:
-            pub_strs["wps"][year_str] = []
-        pub_strs["wps"][year_str].append(
-            "<li class='list-group-item'>" + pub_str + "<br>" + " ".join(buttons) + "</li>"
-        )
-    else:
-        if year_str not in pub_strs["pubs"]:
-            pub_strs["pubs"][year_str] = []
-        buttons.append(button(pub_url, "Published", "bi-journal-check"))
-        pub_strs["pubs"][year_str].append(
-            "<li class='list-group-item'>" + pub_str + "<br>" + "<details><summary>Abstract</summary><ul>" + abstract + "</ul></details>" + "".join(buttons) + "</li>"
-        )
-```
+## EGFR Signaling
 
-## Published Papers
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam diam vulputate rutrum aliquet. Nullam sagittis, lorem at convallis sollicitudin, enim magna tempus ex, venenatis mattis metus leo sed sem. Donec magna urna, consequat nec risus ut, sollicitudin ornare neque. Nam vitae lobortis mauris. Nunc dignissim justo ipsum, ac fermentum nunc imperdiet a. Praesent sed vestibulum tortor. Curabitur tempus consectetur felis, ac fringilla enim viverra quis. Duis tempor lectus a sapien suscipit blandit. In in nibh turpis. Aliquam vitae sollicitudin ex.
 
-```{python}
-#| label: "published-year"
-#| id: "published-year"
-#| output: asis
-for year in sorted(pub_strs["pubs"].keys(), reverse=True):
-    display(Markdown(f"### {year}" + "{#" + f"published-{year}" + "}"))
-    display(HTML(
-        "<ul class='list-group list-group-flush'>" + '\n'.join(pub_strs["pubs"][year]) + "</ul>"
-    ))
-```
+Etiam nibh quam, tincidunt eu magna quis, fringilla placerat nisl. Mauris malesuada lobortis augue, vitae consequat mi tincidunt ac. Etiam venenatis lectus sed libero lobortis volutpat. Nulla rutrum tortor vitae elit blandit, in finibus arcu porta. Nullam faucibus tempus posuere. Praesent dignissim, felis vitae lacinia ultricies, sapien neque faucibus leo, in pretium lacus elit quis nulla. Nam scelerisque fermentum interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam porttitor metus ac ipsum tempus malesuada. Cras feugiat, metus vel gravida ultrices, urna urna malesuada ante, ut placerat urna justo vitae est. Fusce ac dolor vitae mi pretium varius et nec orci. Donec consequat tincidunt ultricies. Vestibulum elit leo, facilisis bibendum elementum dapibus, faucibus et orci. Pellentesque eu semper sem. Cras vel mattis sem.
+
+Fusce aliquam leo vitae mauris molestie, in scelerisque mauris pretium. Nunc vulputate tincidunt odio, in dapibus nunc varius at. Integer bibendum dolor eget imperdiet vulputate. Etiam sollicitudin vulputate orci, et mollis augue eleifend et. Etiam congue placerat purus nec elementum. Nullam nec ultrices tortor. Morbi luctus gravida leo in pharetra. Pellentesque suscipit finibus massa sed ornare. Sed lorem nunc, tincidunt vel efficitur nec, rutrum vitae nisl. Vestibulum erat odio, aliquam et massa in, luctus commodo diam. In id sapien felis. Donec et nulla nunc. Nam placerat cursus scelerisque. Donec non ligula eu sapien laoreet egestas a nec metus. Nunc dapibus nulla lobortis elit pretium gravida sed vitae dui. Praesent eget velit lacus.
+
+## Extracellular Vesicles
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tortor ante, ullamcorper id nunc nec, tincidunt fermentum mi. Phasellus bibendum cursus lorem eu consequat. Vestibulum posuere malesuada eros, et pellentesque nulla mollis vel. Cras pulvinar convallis velit mattis porta. Pellentesque interdum libero ante. Integer eleifend eleifend lorem quis egestas. Phasellus pulvinar interdum mauris nec blandit. In gravida dolor arcu, a venenatis ligula porta vitae. Cras sollicitudin dui ac ante tempor, sit amet fringilla lorem accumsan. Suspendisse non massa ac sapien ornare placerat. In hac habitasse platea dictumst. Vestibulum diam quam, dapibus vitae malesuada a, semper nec justo. Proin lobortis massa metus, vel pretium justo auctor sed.
+
+In lacus libero, fringilla quis faucibus euismod, malesuada nec quam. Aenean et facilisis enim. Morbi nec nisi dolor. Mauris venenatis hendrerit justo a accumsan. Etiam eget ligula et felis laoreet elementum eu sit amet elit. Pellentesque sodales condimentum nulla eu pharetra. Aenean accumsan sem semper mauris pretium suscipit. Curabitur ut felis faucibus, scelerisque lorem eu, ornare orci.
+
+## Colorectal Cancer
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tortor ante, ullamcorper id nunc nec, tincidunt fermentum mi. Phasellus bibendum cursus lorem eu consequat. Vestibulum posuere malesuada eros, et pellentesque nulla mollis vel. Cras pulvinar convallis velit mattis porta. Pellentesque interdum libero ante. Integer eleifend eleifend lorem quis egestas. Phasellus pulvinar interdum mauris nec blandit. In gravida dolor arcu, a venenatis ligula porta vitae. Cras sollicitudin dui ac ante tempor, sit amet fringilla lorem accumsan. Suspendisse non massa ac sapien ornare placerat. In hac habitasse platea dictumst. Vestibulum diam quam, dapibus vitae malesuada a, semper nec justo. Proin lobortis massa metus, vel pretium justo auctor sed.
+
+In lacus libero, fringilla quis faucibus euismod, malesuada nec quam. Aenean et facilisis enim. Morbi nec nisi dolor. Mauris venenatis hendrerit justo a accumsan. Etiam eget ligula et felis laoreet elementum eu sit amet elit. Pellentesque sodales condimentum nulla eu pharetra. Aenean accumsan sem semper mauris pretium suscipit. Curabitur ut felis faucibus, scelerisque lorem eu, ornare orci.
+
+## Colonic Stem Cells
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam diam vulputate rutrum aliquet. Nullam sagittis, lorem at convallis sollicitudin, enim magna tempus ex, venenatis mattis metus leo sed sem. Donec magna urna, consequat nec risus ut, sollicitudin ornare neque. Nam vitae lobortis mauris. Nunc dignissim justo ipsum, ac fermentum nunc imperdiet a. Praesent sed vestibulum tortor. Curabitur tempus consectetur felis, ac fringilla enim viverra quis. Duis tempor lectus a sapien suscipit blandit. In in nibh turpis. Aliquam vitae sollicitudin ex.
+
+Etiam nibh quam, tincidunt eu magna quis, fringilla placerat nisl. Mauris malesuada lobortis augue, vitae consequat mi tincidunt ac. Etiam venenatis lectus sed libero lobortis volutpat. Nulla rutrum tortor vitae elit blandit, in finibus arcu porta. Nullam faucibus tempus posuere. Praesent dignissim, felis vitae lacinia ultricies, sapien neque faucibus leo, in pretium lacus elit quis nulla. Nam scelerisque fermentum interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam porttitor metus ac ipsum tempus malesuada. Cras feugiat, metus vel gravida ultrices, urna urna malesuada ante, ut placerat urna justo vitae est. Fusce ac dolor vitae mi pretium varius et nec orci. Donec consequat tincidunt ultricies. Vestibulum elit leo, facilisis bibendum elementum dapibus, faucibus et orci. Pellentesque eu semper sem. Cras vel mattis sem.
+
+Fusce aliquam leo vitae mauris molestie, in scelerisque mauris pretium. Nunc vulputate tincidunt odio, in dapibus nunc varius at. Integer bibendum dolor eget imperdiet vulputate. Etiam sollicitudin vulputate orci, et mollis augue eleifend et. Etiam congue placerat purus nec elementum. Nullam nec ultrices tortor. Morbi luctus gravida leo in pharetra. Pellentesque suscipit finibus massa sed ornare. Sed lorem nunc, tincidunt vel efficitur nec, rutrum vitae nisl. Vestibulum erat odio, aliquam et massa in, luctus commodo diam. In id sapien felis. Donec et nulla nunc. Nam placerat cursus scelerisque. Donec non ligula eu sapien laoreet egestas a nec metus. Nunc dapibus nulla lobortis elit pretium gravida sed vitae dui. Praesent eget velit lacus.
+

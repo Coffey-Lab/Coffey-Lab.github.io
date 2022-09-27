@@ -10,10 +10,12 @@ website:
     foreground: "#FFFFFF"
     left: 
       - research.qmd
+      - publications.qmd
+      - people.qmd
 
 format:
   html:
-    theme: litera
+    theme: yeti
     css: styles.css
     toc: true
 

@@ -1,0 +1,96 @@
+---
+title: "People"
+echo: false
+jupyter: python3
+section-divs: false
+keep-md: true
+---
+
+```{python}
+import yaml
+from IPython.display import display, Markdown, HTML
+
+def button(url, str, icon):
+    icon_base = icon[:2]
+    return f"""<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <a class="btn btn-outline-dark btn-sm", href="{url}" target="_blank" rel="noopener noreferrer">
+        <i class="{icon_base} {icon}" role='img' aria-label='{str}'></i>
+        {str}
+    </a>"""
+yaml_data = yaml.safe_load(open("personnel.yml"))
+pub_strs = {"active": {}, "past": {}}
+
+for _, data in yaml_data.items():
+    name = data["name"]
+    email = data["email"]
+    title = data["title"]
+    degree = data["degree"]
+    start = str(data["start"])
+    end_str = data["end"]
+    end = data.get("end")
+    website = data.get("website")
+    google_scholar = data.get("google_scholar")
+    ncbi = data.get("ncbi")
+    research = data["research"]
+    buttons = []
+    
+    if email is not None:
+        buttons.append(button('mailto:' + email, "Email", "bi-envelope"))
+    if ncbi is not None:
+        buttons.append(button(ncbi, "NCBI Bibliography", "ai-pubmed"))
+    if google_scholar is not None:
+        buttons.append(button(google_scholar, "Google Scholar", "ai-google-scholar"))
+    if website is not None:
+        buttons.append(button(website, "Website", "bi-link-45deg"))
+    
+    current = end is None
+    
+    if degree is None:
+        degree = ""
+        
+    if research is None:
+        research = ""
+
+    if current:
+        end_str = "present"
+    
+    pub_str = f'<p style="color:#0b044f; font-size:150%; line-height: 0.2;"><strong>{name} {degree}</strong></p><em>{title}</em><br>{start} - {end_str}<br>{research}<br>'
+
+    #pub_str = f'<p style="font-size:16pt; font-style:bolder; font-color=red">{name}</p><br>{title}<br>{start} - {end_str}<br>{research}'
+    
+    if end_str == "present":
+        #print(name + " active")
+        if start not in pub_strs["active"]:
+            pub_strs["active"][start] = []
+        pub_strs["active"][start].append(
+            "<li class='list-group-item'>" + pub_str + "<br>" + " ".join(buttons) + "</li>"
+        )
+        
+    if end_str != "present":
+        #print(name + " past")
+        if end_str not in pub_strs["past"]:
+            pub_strs["past"][end_str] = []
+        pub_strs["past"][end_str].append(
+            "<li class='list-group-item'>" + pub_str + "<br>" + " ".join(buttons) + "</li>"
+        )
+```
+
+## Current Lab Members
+
+```{python}
+for year in sorted(pub_strs["active"].keys(), reverse=False):
+    #display(Markdown(f"### {year}" + "{#" + f"published-{year}" + "}"))
+    display(HTML(
+        "<ul class='list-group list-group-flush'>" + '\n'.join(pub_strs["active"][year]) + "<br></ul>"
+    ))
+```
+
+## Past Lab Members
+
+```{python}
+for year in sorted(pub_strs["past"].keys(), reverse=True):
+    #display(Markdown(f"### {year}" + "{#" + f"not-published-{year}" + "}"))
+    display(HTML(
+        "<ul class='list-group list-group-flush'>" + '\n'.join(pub_strs["past"][year]) + "<br></ul>"
+    ))
+```
